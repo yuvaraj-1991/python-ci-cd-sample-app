@@ -18,5 +18,14 @@ pipeline {
                 '''
             }
         }
+        stage("Code scan") {
+            steps {
+                echo 'scanning the code'
+                sh '''                    
+                    pip install flake8
+                    flake8 app.py --max-line-length=120
+                '''
+            }
+        }
     }
 }
