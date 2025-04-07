@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Installing python dependiencies & requirement'
                 sh '''
-                    python --version                   
+                    python --version
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -21,10 +21,7 @@ pipeline {
         stage("Code scan") {
             steps {
                 echo 'scanning the code'
-                sh '''                    
-                    pip install flake8
-                    flake8 app.py --max-line-length=120
-                '''
+                sh 'flake8 app.py --max-line-length=120'
             }
         }
     }
